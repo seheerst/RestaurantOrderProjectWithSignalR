@@ -29,7 +29,7 @@ namespace RestaurantOrderProject.DataAccessLayer.Repositories
             _context.SaveChanges();
         }
 
-        public List<T> GetAllList(T entity)
+        public List<T> GetAllList()
         {
             return _context.Set<T>().ToList();
         }
