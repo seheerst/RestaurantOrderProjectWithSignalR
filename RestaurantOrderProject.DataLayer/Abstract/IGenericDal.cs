@@ -12,6 +12,6 @@ namespace RestaurantOrderProject.DataAccessLayer.Abstract
         void Delete(T entity);
         void Update(T entity);
         T GetById(int id);
-        List<T> GetAllList(T entity);
+        List<T> GetAllList();
     }
 }
