@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RestaurantOrderProject.EntityLayer.Entities
 {
-    internal class SocialMedia
+    public class SocialMedia
     {
+        [Key]
         public int SocilMediaID { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }

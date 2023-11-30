@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantOrderProject.EntityLayer.Entities
 {
-    internal class Contact
+    public class Contact
     {
         public int ContactID { get; set; }
         public string Location { get; set; }
