@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantOrderProject.DtoLayer.AboutDtos
 {
-    internal class UpdateAboutDto
+    public class UpdateAboutDto
     {
         public int AboutID { get; set; }
         public string Title { get; set; }
