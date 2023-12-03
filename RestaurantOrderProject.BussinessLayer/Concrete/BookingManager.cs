@@ -25,7 +25,7 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
 
         public void TDelete(Booking entity)
         {
-           _bookingDal.Add(entity);
+           _bookingDal.Delete(entity);
         }
 
         public List<Booking> TGetAllList()
