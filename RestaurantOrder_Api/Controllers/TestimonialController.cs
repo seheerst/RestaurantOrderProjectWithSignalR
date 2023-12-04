@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderProject.BussinessLayer.Abstract;
 using RestaurantOrderProject.DtoLayer.TestimonialDtos;
@@ -11,15 +12,16 @@ namespace RestaurantOrder_Api.Controllers
     public class TestimonialController : ControllerBase
     {
         private readonly ITestimonialService _testimonialService;
-
-        public TestimonialController(ITestimonialService testimonialService)
+        private readonly IMapper _mapper;
+        public TestimonialController(ITestimonialService testimonialService, IMapper mapper)
         {
             _testimonialService = testimonialService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult TestimonialList()
         {
-            var values = _testimonialService.TGetAllList();
+            var values = _mapper.Map<List<ResultTestimonialDto>>(_testimonialService.TGetAllList());
             return Ok(values);
 
         }

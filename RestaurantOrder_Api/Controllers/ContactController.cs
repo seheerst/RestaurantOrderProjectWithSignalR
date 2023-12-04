@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderProject.BussinessLayer.Abstract;
+using RestaurantOrderProject.DtoLayer.CategoryDtos;
 using RestaurantOrderProject.DtoLayer.ContactDtos;
 using RestaurantOrderProject.EntityLayer.Entities;
 
@@ -11,15 +13,17 @@ namespace RestaurantOrder_Api.Controllers
     public class ContactController : ControllerBase
     {
         private readonly IContactService _contactService;
+        private readonly IMapper _mapper;
 
-        public ContactController(IContactService contactService)
+        public ContactController(IContactService contactService, IMapper mapper)
         {
             _contactService = contactService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult ContactList()
         {
-            var values = _contactService.TGetAllList();
+            var values = _mapper.Map<List<ResultContactDto>>(_contactService.TGetAllList());
             return Ok(values);
 
         }

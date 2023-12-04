@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderProject.BussinessLayer.Abstract;
 using RestaurantOrderProject.DtoLayer.FeatureDtos;
@@ -11,15 +12,16 @@ namespace RestaurantOrder_Api.Controllers
     public class FeatureController : ControllerBase
     {
         private readonly IFeatureService _featureService;
-
-        public FeatureController(IFeatureService featureService)
+        private readonly IMapper _mapper;
+        public FeatureController(IFeatureService featureService, IMapper mapper)
         {
             _featureService = featureService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult FeatureList()
         {
-            var values = _featureService.TGetAllList();
+            var values = _mapper.Map<List<ResultFeatureDto>>(_featureService.TGetAllList());
             return Ok(values);
 
         }

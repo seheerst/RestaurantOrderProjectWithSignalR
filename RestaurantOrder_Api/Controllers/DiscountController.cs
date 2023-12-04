@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderProject.BussinessLayer.Abstract;
 using RestaurantOrderProject.DtoLayer.DiscountDtos;
@@ -11,15 +12,16 @@ namespace RestaurantOrder_Api.Controllers
     public class DiscountController : ControllerBase
     {
         private readonly IDiscountService _discountService;
-
-        public DiscountController(IDiscountService discountService)
+        private readonly IMapper _mapper;
+        public DiscountController(IDiscountService discountService, IMapper mapper)
         {
             _discountService = discountService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult DiscountList()
         {
-            var values = _discountService.TGetAllList();
+            var values = _mapper.Map<List<ResultDiscountDto>>(_discountService.TGetAllList());
             return Ok(values);
 
         }

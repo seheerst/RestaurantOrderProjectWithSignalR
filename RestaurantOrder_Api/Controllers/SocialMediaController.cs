@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderProject.BussinessLayer.Abstract;
 using RestaurantOrderProject.DtoLayer.SocialMediaDtos;
@@ -11,15 +12,17 @@ namespace RestaurantOrder_Api.Controllers
     public class SocialMediaController : ControllerBase
     {
         private readonly ISocialMediaService _socialMediaService;
-
-        public SocialMediaController(ISocialMediaService socialMediaService)
+        private readonly IMapper _mapper;
+        public SocialMediaController(ISocialMediaService socialMediaService, IMapper mapper)
         {
             _socialMediaService = socialMediaService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult SocialMediaList()
         {
-            var values = _socialMediaService.TGetAllList();
+            var values = _mapper.Map<List<ResultSocialMediaDto>>(_socialMediaService.TGetAllList());
+
             return Ok(values);
 
         }

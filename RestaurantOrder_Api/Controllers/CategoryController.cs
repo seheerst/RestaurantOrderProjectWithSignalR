@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderProject.BussinessLayer.Abstract;
 using RestaurantOrderProject.DtoLayer.CategoryDtos;
@@ -11,15 +12,16 @@ namespace RestaurantOrder_Api.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
-
-        public CategoryController(ICategoryService categoryService)
+        private readonly IMapper _mapper;
+        public CategoryController(ICategoryService categoryService, IMapper mapper)
         {
             _categoryService = categoryService;
+            _mapper = mapper;
         }
         [HttpGet]
         public IActionResult CategoryList()
         {
-            var values = _categoryService.TGetAllList();
+            var values = _mapper.Map<List<ResultCategoryDto>>(_categoryService.TGetAllList());
             return Ok(values);
 
         }
@@ -27,13 +29,13 @@ namespace RestaurantOrder_Api.Controllers
         [HttpPost]
         public IActionResult CreateCategory(CreateCategoryDto createCategoryDto)
         {
-            Category category = new Category()
+
+            _categoryService.TAdd(new Category()
             {
                 CategoryName = createCategoryDto.CategoryName,
                 Status = createCategoryDto.Status,
 
-            };
-            _categoryService.TAdd(category);
+            });
             return Ok("eklendi");
         }
 
