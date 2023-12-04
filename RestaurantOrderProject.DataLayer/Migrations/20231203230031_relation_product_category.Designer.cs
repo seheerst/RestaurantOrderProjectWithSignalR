@@ -12,7 +12,7 @@ using RestaurantOrderProject.DataAccessLayer.Concrete;
 namespace RestaurantOrderProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(RestaurantOrderContext))]
-    [Migration("20231203162110_relation_product_category")]
+    [Migration("20231203230031_relation_product_category")]
     partial class relation_product_category
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
