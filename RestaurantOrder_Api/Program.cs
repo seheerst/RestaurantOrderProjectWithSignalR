@@ -3,6 +3,7 @@ using RestaurantOrderProject.BussinessLayer.Concrete;
 using RestaurantOrderProject.DataAccessLayer.Abstract;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 using RestaurantOrderProject.DataAccessLayer.EntityFramework;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<RestaurantOrderContext>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
@@ -34,7 +36,7 @@ builder.Services.AddScoped<IFeatureService, FeatureManager>();
 builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
 
 builder.Services.AddScoped<IProductService, ProductManager>();
-builder.Services.AddScoped<IBookingDal, EfBookingDal>();
+builder.Services.AddScoped<IProductDal, EfProductDal>();
 
 builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
 builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
