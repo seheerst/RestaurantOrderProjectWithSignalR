@@ -1,4 +1,5 @@
-﻿using RestaurantOrderProject.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantOrderProject.DataAccessLayer.Abstract;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 using RestaurantOrderProject.DataAccessLayer.Repositories;
 using RestaurantOrderProject.EntityLayer.Entities;
@@ -14,6 +15,13 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
     {
         public EfProductDal(RestaurantOrderContext context) : base(context)
         {
+        }
+
+        public List<Product> GetProductsWithCategories()
+        {
+            var context = new RestaurantOrderContext();
+            var values = context.Product.Include(x => x.Category).ToList();
+            return values;
         }
     }
 }
