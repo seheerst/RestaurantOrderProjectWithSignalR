@@ -4,13 +4,7 @@
     Layout = "~/Views/Admin/Index.cshtml";
     var count = 0;
 }
-<style>
-    img {
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-    }
-</style>
+
 
 <div class="content">
     <div class="container-fluid">
@@ -27,8 +21,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Status</th>
+                                    <th style="width: 170px">Başlık</th>
+                                    <th>Açıklama</th>
                                     <th>Sil</th>
                                     <th>Güncelle</th>
                                 </tr>
@@ -39,7 +33,7 @@
                                     count++;
                                     <tr>
                                         <td>@count</td>
-                                        <td><img src="@item.ImageUrl" />    @item.Title</td>
+                                        <td> @item.Title</td>
                                         <td>@item.Description</td>
                                         <td> <a href="/About/DeleteAbout/@item.AboutID" class="btn btn-outline-danger">Sil</a></td>
                                         <td> <a href="/About/UpdateAbout/@item.AboutID" class="btn btn-outline-success">Güncelle</a></td>
