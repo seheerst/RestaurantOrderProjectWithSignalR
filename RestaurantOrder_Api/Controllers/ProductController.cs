@@ -41,6 +41,7 @@ namespace RestaurantOrder_Api.Controllers
                 ProductName = y.ProductName,
                 Status = y.Status,
                 CategoryName = y.Category.CategoryName
+                
             });
             return Ok(values);
         }
@@ -51,18 +52,18 @@ namespace RestaurantOrder_Api.Controllers
             Product Product = new Product()
             {
                 ProductName = createProductDto.ProductName,
-                Status = createProductDto.Status,
+                Status = true,
                 Description = createProductDto.Description,
                 ImageUrl = createProductDto.ImageUrl,
                 Price = createProductDto.Price,
-
+                CategoryID = createProductDto.CategoryID
 
             };
             _productService.TAdd(Product);
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetById(id);
@@ -81,12 +82,13 @@ namespace RestaurantOrder_Api.Controllers
                 Description = updateProductDto.Description,
                 ImageUrl = updateProductDto.ImageUrl,
                 Price = updateProductDto.Price,
+                CategoryID = updateProductDto.CategoryID
             };
             _productService.TUpdate(Product);
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetById(id);

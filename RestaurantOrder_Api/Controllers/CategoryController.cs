@@ -33,13 +33,13 @@ namespace RestaurantOrder_Api.Controllers
             _categoryService.TAdd(new Category()
             {
                 CategoryName = createCategoryDto.CategoryName,
-                Status = createCategoryDto.Status,
+                Status = true,
 
             });
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id)
         {
             var value = _categoryService.TGetById(id);
@@ -61,7 +61,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetCategory")]
+        [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
             var value = _categoryService.TGetById(id);

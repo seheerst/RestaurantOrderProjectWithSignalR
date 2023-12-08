@@ -41,7 +41,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var value = _discountService.TGetById(id);
@@ -65,7 +65,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _discountService.TGetById(id);

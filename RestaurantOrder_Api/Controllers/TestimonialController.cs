@@ -42,7 +42,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteTestimonial(int id)
         {
             var value = _testimonialService.TGetById(id);
@@ -67,7 +67,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetTestimonial")]
+        [HttpGet("{id}")]
         public IActionResult GetTestimonial(int id)
         {
             var value = _testimonialService.TGetById(id);

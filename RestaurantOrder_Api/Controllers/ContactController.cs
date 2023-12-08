@@ -44,7 +44,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteContact(int id)
         {
             var value = _contactService.TGetById(id);
@@ -68,7 +68,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetContact")]
+        [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
             var value = _contactService.TGetById(id);

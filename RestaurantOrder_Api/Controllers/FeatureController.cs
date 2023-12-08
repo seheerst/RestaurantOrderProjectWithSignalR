@@ -44,7 +44,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var value = _featureService.TGetById(id);
@@ -71,7 +71,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetFeature(int id)
         {
             var value = _featureService.TGetById(id);

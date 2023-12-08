@@ -40,7 +40,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteSocialMedia(int id)
         {
             var value = _socialMediaService.TGetById(id);
@@ -62,7 +62,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("güncellendi");
         }
 
-        [HttpGet("GetSocialMedia")]
+        [HttpGet("{id}")]
         public IActionResult GetSocialMedia(int id)
         {
             var value = _socialMediaService.TGetById(id);

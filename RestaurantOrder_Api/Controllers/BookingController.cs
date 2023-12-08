@@ -41,7 +41,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("Eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
             var value = _bookingService.TGetById(id);
@@ -64,7 +64,7 @@ namespace RestaurantOrder_Api.Controllers
             _bookingService.TUpdate(booking);
             return Ok("Güncellendi");
         }
-        [HttpGet("GetBooking")]
+        [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _bookingService.TGetById(id);
