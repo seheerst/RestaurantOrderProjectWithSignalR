@@ -31,7 +31,6 @@ namespace RestaurantOrder_Api.Controllers
         {
             Feature Feature = new Feature()
             {
-                FeatureName = createFeatureDto.FeatureName,
                 Description1 = createFeatureDto.Description1,
                 Description2 = createFeatureDto.Description2,
                 Description3 = createFeatureDto.Description3,
@@ -58,7 +57,6 @@ namespace RestaurantOrder_Api.Controllers
             Feature Feature = new Feature()
             {
                 FeatureID = updateFeatureDto.FeatureID,
-                FeatureName = updateFeatureDto.FeatureName,
                 Description1 = updateFeatureDto.Description1,
                 Description2 = updateFeatureDto.Description2,
                 Description3 = updateFeatureDto.Description3,
