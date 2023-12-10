@@ -18,7 +18,12 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
-        public void TAdd(Category entity)
+		public int TActiveCategoryCount()
+		{
+            return _categoryDal.ActiveCategoryCount();
+		}
+
+		public void TAdd(Category entity)
         {
             _categoryDal.Add(entity);
         }
@@ -38,7 +43,17 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
             return _categoryDal.GetById(id);
         }
 
-        public void TUpdate(Category entity)
+		public int TGetCategoryCount()
+		{
+            return _categoryDal.GetCategoryCount();
+		}
+
+		public int TPassiveCategoryCount()
+		{
+			return _categoryDal.PassiveCategoryCount();
+		}
+
+		public void TUpdate(Category entity)
         {
             _categoryDal.Update(entity);
         }

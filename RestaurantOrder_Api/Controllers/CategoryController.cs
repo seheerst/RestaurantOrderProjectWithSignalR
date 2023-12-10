@@ -25,8 +25,28 @@ namespace RestaurantOrder_Api.Controllers
             return Ok(values);
 
         }
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            var count = _categoryService.TGetCategoryCount();
+            return Ok(count);
+        }
 
-        [HttpPost]
+		[HttpGet("ActiveCategoryCount")]
+		public IActionResult ActiveCategoryCount()
+		{
+			var count = _categoryService.TActiveCategoryCount();
+			return Ok(count);
+		}
+
+		[HttpGet("PassiveCategoryCount")]
+		public IActionResult PassiveCategoryCount()
+		{
+			var count = _categoryService.TPassiveCategoryCount();
+			return Ok(count);
+		}
+
+		[HttpPost]
         public IActionResult CreateCategory(CreateCategoryDto createCategoryDto)
         {
 

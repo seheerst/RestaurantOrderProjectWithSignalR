@@ -9,5 +9,9 @@ namespace RestaurantOrderProject.DataAccessLayer.Abstract
 {
     public interface ICategoryDal:IGenericDal<Category>
     {
+        public int GetCategoryCount();
+        public int ActiveCategoryCount();
+        public int PassiveCategoryCount();
+
     }
 }
