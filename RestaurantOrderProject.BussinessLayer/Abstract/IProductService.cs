@@ -10,5 +10,13 @@ namespace RestaurantOrderProject.BussinessLayer.Abstract
     public interface IProductService:IGenericService<Product>
     {
         List<Product> TGetProductsWithCategories();
-    }
+		int TGetProductCount();
+
+		int TProductCountByCategoryNameHamburger();
+		int TProductCountByCategoryNameDrink();
+		decimal TProductPriceAvg();
+		string TProductNameByMaxPrice();
+		string TProductNameByMinPrice();
+
+	}
 }

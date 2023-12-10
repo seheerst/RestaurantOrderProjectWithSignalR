@@ -28,7 +28,34 @@ namespace RestaurantOrder_Api.Controllers
             return Ok(value);
         }
 
-        [HttpGet("ProductListWithCategory")]
+		[HttpGet("ProductCount")]
+		public IActionResult ProductCount()
+		{
+			var count = _productService.TGetProductCount();
+			return Ok(count);
+		}
+
+		[HttpGet("TProductPriceAvg")]
+		public IActionResult ProductPriceAvg()
+		{
+			var count = _productService.TProductPriceAvg();
+			return Ok(count);
+		}
+       
+		[HttpGet("ProductCountByCategoryNameDrink")]
+		public IActionResult ProductCountByCategoryNameDrink()
+		{
+			var count = _productService.TProductCountByCategoryNameDrink();
+			return Ok(count);
+		}
+		[HttpGet("ProductCountByCategoryNameHamburger")]
+		public IActionResult ProductCountByCategoryNameHamburger()
+		{
+			var count = _productService.TProductCountByCategoryNameHamburger();
+			return Ok(count);
+		}
+
+		[HttpGet("ProductListWithCategory")]
         public IActionResult ProductListWithCategory()
         {
             var context = new RestaurantOrderContext();
