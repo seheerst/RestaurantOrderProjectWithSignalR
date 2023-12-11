@@ -55,6 +55,20 @@ namespace RestaurantOrder_Api.Controllers
 			return Ok(count);
 		}
 
+		[HttpGet("ProductNameByMinPrice")]
+		public IActionResult ProductNameByMinPrice()
+		{
+			var product = _productService.TProductNameByMinPrice();
+			return Ok(product);
+		}
+
+		[HttpGet("ProductNameByMaxPrice")]
+		public IActionResult ProductNameByMaxPrice()
+		{
+			var product = _productService.TProductNameByMaxPrice();
+			return Ok(product);
+		}
+
 		[HttpGet("ProductListWithCategory")]
         public IActionResult ProductListWithCategory()
         {
