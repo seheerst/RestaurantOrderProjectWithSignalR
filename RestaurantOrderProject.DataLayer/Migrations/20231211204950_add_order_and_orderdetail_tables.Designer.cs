@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using RestaurantOrderProject.DataAccessLayer.Concrete;
 namespace RestaurantOrderProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(RestaurantOrderContext))]
-    partial class RestaurantOrderContextModelSnapshot : ModelSnapshot
+    [Migration("20231211204950_add_order_and_orderdetail_tables")]
+    partial class add_order_and_orderdetail_tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
