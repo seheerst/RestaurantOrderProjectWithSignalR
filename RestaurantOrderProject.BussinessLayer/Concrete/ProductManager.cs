@@ -73,6 +73,11 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
             return _productDal.ProductPriceAvg();
 		}
 
+		public decimal TProductPricebyHamburgerAvg()
+		{
+            return _productDal.ProductPricebyHamburgerAvg();
+		}
+
 		public void TUpdate(Product entity)
         {
             _productDal.Update(entity);

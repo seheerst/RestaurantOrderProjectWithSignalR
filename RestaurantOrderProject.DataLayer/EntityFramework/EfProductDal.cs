@@ -57,5 +57,11 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
 		{
 			return _context.Product.Average(x => x.Price);
 		}
+
+		public decimal ProductPricebyHamburgerAvg()
+		{
+			var avg = _context.Product.Where(x => x.CategoryID == (_context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryID).FirstOrDefault())).Average(w=> w.Price);
+			return avg;
+		}
 	}
 }
