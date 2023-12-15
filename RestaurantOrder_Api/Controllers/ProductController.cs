@@ -69,6 +69,13 @@ namespace RestaurantOrder_Api.Controllers
 			return Ok(product);
 		}
 
+		[HttpGet("ProductPricebyHamburgerAvg")]
+		public IActionResult ProductPricebyHamburgerAvg()
+		{
+			var product = _productService.TProductPricebyHamburgerAvg();
+			return Ok(product);
+		}
+
 		[HttpGet("ProductListWithCategory")]
         public IActionResult ProductListWithCategory()
         {
