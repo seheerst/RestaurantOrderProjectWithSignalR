@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using RestaurantOrderProject.DataAccessLayer.Concrete;
 namespace RestaurantOrderProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(RestaurantOrderContext))]
-    partial class RestaurantOrderContextModelSnapshot : ModelSnapshot
+    [Migration("20231216165528_mig_add_money_case")]
+    partial class mig_add_money_case
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
