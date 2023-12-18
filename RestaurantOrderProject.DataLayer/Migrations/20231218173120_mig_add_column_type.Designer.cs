@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 
@@ -11,9 +12,10 @@ using RestaurantOrderProject.DataAccessLayer.Concrete;
 namespace RestaurantOrderProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(RestaurantOrderContext))]
-    partial class RestaurantOrderContextModelSnapshot : ModelSnapshot
+    [Migration("20231218173120_mig_add_column_type")]
+    partial class mig_add_column_type
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -327,26 +329,6 @@ namespace RestaurantOrderProject.DataAccessLayer.Migrations
                     b.HasKey("SocilMediaID");
 
                     b.ToTable("SocialMedias");
-                });
-
-            modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Table", b =>
-                {
-                    b.Property<int>("TableID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TableID"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("TableID");
-
-                    b.ToTable("Tables");
                 });
 
             modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Testimonial", b =>
