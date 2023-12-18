@@ -11,7 +11,7 @@ namespace RestaurantOrderProject.BussinessLayer.Abstract
 	{
 		int TTotalOrderCount();
 		int TActiveOrderCount();
-
+		decimal TTodayTotalPrice();
 		decimal TLastOrderPrice();
 	}
 }

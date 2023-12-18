@@ -28,6 +28,11 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
 			return _context.Orders.OrderByDescending(x => x.OrderID).Take(1).Select(y=> y.TotalPrice).FirstOrDefault();
 		}
 
+		public decimal TodayTotalPrice()
+		{
+			return _context.Orders.Where(x=> x.OrderDate == DateTime.Parse(DateTime.Now.ToShortDateString())).Sum(x => x.TotalPrice);
+		}
+
 		public int TotalOrderCount()
 		{
 			return _context.Orders.Count();
