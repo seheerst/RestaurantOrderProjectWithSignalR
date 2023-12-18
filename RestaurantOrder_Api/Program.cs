@@ -65,6 +65,12 @@ builder.Services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
 builder.Services.AddScoped<IOrderService, OrderManager>();
 builder.Services.AddScoped<IOrderDal, EfOrderDal>();
 
+builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
+builder.Services.AddScoped<IMoneyCaseDal, EfMoneyCaseDal>();
+
+builder.Services.AddScoped<ITableService, TableManager>();
+builder.Services.AddScoped<ITableDal, EfTableDal>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
