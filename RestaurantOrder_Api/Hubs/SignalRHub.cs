@@ -35,6 +35,21 @@ namespace RestaurantOrder_Api.Hubs
 			var value6 = _productService.TProductCountByCategoryNameDrink();
 			await Clients.All.SendAsync("ReceiveProductCountByDrink", value6);
 
+			var value7 = _productService.TProductPriceAvg();
+			await Clients.All.SendAsync("ReceiveProductPriceAvg", value7);
+
+			var value8 = _productService.TProductNameByMaxPrice();
+			await Clients.All.SendAsync("ReceiveProductNameByMaxPrice", value8);
+
+			var value9 = _productService.TProductNameByMinPrice();
+			await Clients.All.SendAsync("ReceiveProductNameByMinPrice", value9);
+
+			var value10 = _productService.TProductPricebyHamburgerAvg();
+			await Clients.All.SendAsync("ReceiveProductPricebyHamburgerAvg", value10);
+
+			var value11 = _productService.TProductPriceAvg();
+			await Clients.All.SendAsync("ReceiveProductPriceAvg", value11);
+
 		}
 
 
