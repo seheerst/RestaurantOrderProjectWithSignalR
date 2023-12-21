@@ -42,6 +42,20 @@
 				connection.on("ReceiveProductCountByDrink", (value6) => {
 					$("#productCountByDrink").text(value6);
 				});
+				connection.on("ReceiveProductPriceAvg", (value7) => {
+					$("#productPriceAvg").text(value7);
+				});
+				connection.on("ReceiveProductNameByMaxPrice", (value8) => {
+					$("#productNameByMaxPrice").text(value8);
+				});
+				connection.on("ReceiveProductNameByMinPrice", (value9) => {
+					$("#productNameByMinPrice").text(value9);
+				});
+				connection.on("ReceiveProductPricebyHamburgerAvg", (value10) => {
+					$("#productPricebyHamburgerAvg").text(value10);
+				});
+				
+
 			});
 		</script>
 		<h4 class="page-title">Anlık İstatistikler</h4>
@@ -130,7 +144,7 @@
 						<div class="row">
 							<div class="col-5">
 								<div class="icon-big text-center">
-									<i class="la la-users"></i>
+									<i class="la la-support"></i>
 								</div>
 							</div>
 							<div class="col-7 d-flex align-items-center">
@@ -168,13 +182,13 @@
 						<div class="row">
 							<div class="col-5">
 								<div class="icon-big text-center">
-									<i class="la la-newspaper-o"></i>
+									<i class="la la-money"></i>
 								</div>
 							</div>
 							<div class="col-7 d-flex align-items-center">
 								<div class="numbers">
-									<p class="card-category">Subscribers</p>
-									<h4 class="card-title">1303</h4>
+									<p class="card-category">Ortalama Fiyat</p>
+									<h4 class="card-title" id="productPriceAvg"></h4>
 								</div>
 							</div>
 						</div>
@@ -187,13 +201,13 @@
 						<div class="row">
 							<div class="col-5">
 								<div class="icon-big text-center">
-									<i class="la la-check-circle"></i>
+									<i class="la la-star"></i>
 								</div>
 							</div>
 							<div class="col-7 d-flex align-items-center">
 								<div class="numbers">
-									<p class="card-category">Order</p>
-									<h4 class="card-title">576</h4>
+									<p class="card-category">En yüksek Fiyat</p>
+									<h4 class="card-title" id="productNameByMaxPrice"></h4>
 								</div>
 							</div>
 						</div>
@@ -208,13 +222,13 @@
 						<div class="row">
 							<div class="col-5">
 								<div class="icon-big text-center">
-									<i class="la la-users"></i>
+									<i class="la la-star-o"></i>
 								</div>
 							</div>
 							<div class="col-7 d-flex align-items-center">
 								<div class="numbers">
-									<p class="card-category">Visitors</p>
-									<h4 class="card-title">1,294</h4>
+									<p class="card-category">En Düşük Fiyat</p>
+									<h4 class="card-title" id="productNameByMinPrice"></h4>
 								</div>
 							</div>
 						</div>
@@ -232,8 +246,8 @@
 							</div>
 							<div class="col-7 d-flex align-items-center">
 								<div class="numbers">
-									<p class="card-category">Sales</p>
-									<h4 class="card-title">$ 1,345</h4>
+									<p class="card-category">Ort Hamburger Fiyatı</p>
+									<h4 class="card-title" id="productPricebyHamburgerAvg"></h4>
 								</div>
 							</div>
 						</div>
