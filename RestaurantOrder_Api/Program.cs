@@ -71,6 +71,9 @@ builder.Services.AddScoped<IMoneyCaseDal, EfMoneyCaseDal>();
 builder.Services.AddScoped<ITableService, TableManager>();
 builder.Services.AddScoped<ITableDal, EfTableDal>();
 
+builder.Services.AddScoped<ISliderService, SliderManager>();
+builder.Services.AddScoped<ISliderDal, EfSliderDal>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
