@@ -16,7 +16,7 @@ namespace RestaurantOrder_UI.ViewComponents.DefaultComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7050/api/Product");
+            var responseMessage = await client.GetAsync("https://localhost:7050/api/Product/ProductListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
