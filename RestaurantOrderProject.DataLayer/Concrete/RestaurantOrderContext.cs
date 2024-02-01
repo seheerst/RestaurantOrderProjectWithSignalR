@@ -30,6 +30,7 @@ namespace RestaurantOrderProject.DataAccessLayer.Concrete
         public DbSet<MoneyCase> MoneyCases { get; set; }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
 
     }
 }
