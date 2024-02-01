@@ -74,6 +74,9 @@ builder.Services.AddScoped<ITableDal, EfTableDal>();
 builder.Services.AddScoped<ISliderService, SliderManager>();
 builder.Services.AddScoped<ISliderDal, EfSliderDal>();
 
+builder.Services.AddScoped<IBasketService, BasketManager>();
+builder.Services.AddScoped<IBasketDal, EfBasketDal>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
