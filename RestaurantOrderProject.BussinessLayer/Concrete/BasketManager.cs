@@ -12,6 +12,12 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
     public class BasketManager : IBasketService
     {
         private readonly IBasketDal _basketDal;
+
+        public BasketManager(IBasketDal basketDal)
+        {
+            _basketDal = basketDal;
+        }
+
         public void TAdd(Basket entity)
         {
             _basketDal.Add(entity);
