@@ -19,8 +19,10 @@ namespace RestaurantOrder_Api.Controllers
         [HttpGet]
         public IActionResult GetBasketByTableId(int id)
         {
-            var value = _basketService.TGetBasketByTableNumber(id);
-            return Ok(value);
+            var values = _basketService.TGetBasketByTableNumber(id);
+            return Ok(values);
         }
+
+        
     }
 }
