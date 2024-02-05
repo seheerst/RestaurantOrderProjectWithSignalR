@@ -5,6 +5,7 @@ using RestaurantOrderProject.DataAccessLayer.Abstract;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 using RestaurantOrderProject.DataAccessLayer.EntityFramework;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -76,6 +77,9 @@ builder.Services.AddScoped<ISliderDal, EfSliderDal>();
 
 builder.Services.AddScoped<IBasketService, BasketManager>();
 builder.Services.AddScoped<IBasketDal, EfBasketDal>();
+
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
