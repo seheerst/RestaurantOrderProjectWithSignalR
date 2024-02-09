@@ -20,7 +20,7 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
         public List<Basket> GetBasketByTableNumber(int id)
         {
             using var context = new RestaurantOrderContext();
-            var values = context.Baskets.Where(x => x.TableID == id).ToList();
+            var values = context.Baskets.Where(x => x.TableID == id).Include(y=>y.Product).ToList();
             return values;
         }
     }
