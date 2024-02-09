@@ -28,7 +28,8 @@ namespace RestaurantOrder_UI.Controllers
             return View();
         }
 
-        [HttpPost("{id}")]
+        [HttpPost]
+        [Route("Menu/AddBasket/{id}")]
         public async Task<IActionResult> AddBasket(int id)
         {
             CreateBasketDto createBasketDto = new CreateBasketDto();
