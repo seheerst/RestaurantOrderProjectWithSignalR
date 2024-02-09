@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestaurantOrder_UI.Dtos.BasketDtos;
+using System.Text;
 
 namespace RestaurantOrder_UI.Controllers
 {
@@ -16,7 +17,7 @@ namespace RestaurantOrder_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7050/api/Basket?id=4");
+            var responseMessage = await client.GetAsync("https://localhost:7050/api/Basket/BasketListWithProductName?id=4");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -25,5 +26,18 @@ namespace RestaurantOrder_UI.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> DeleteBasket(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7050/api/Basket/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return NoContent();
+        }
+
+
     }
 }
