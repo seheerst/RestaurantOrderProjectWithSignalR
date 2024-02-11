@@ -13,7 +13,6 @@ namespace RestaurantOrder_Api.Hubs
 		private readonly ITableService _tableService;
 		private readonly IBookingService _bookingService;
 
-
         public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, ITableService tableService, IBookingService bookingService)
 		{
 			_categoryService = categoryService;
@@ -86,5 +85,11 @@ namespace RestaurantOrder_Api.Hubs
             await Clients.All.SendAsync("ReceiveMenuTableCount", value3);
         }
 
-	}
+        public async Task GetBookingList()
+        {
+            var values = _bookingService.TGetAllList();
+            await Clients.All.SendAsync("ReceiveBookingList", values);
+        }
+
+    }
 }
