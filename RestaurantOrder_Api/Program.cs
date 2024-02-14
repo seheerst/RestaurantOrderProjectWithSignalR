@@ -78,6 +78,9 @@ builder.Services.AddScoped<ISliderDal, EfSliderDal>();
 builder.Services.AddScoped<IBasketService, BasketManager>();
 builder.Services.AddScoped<IBasketDal, EfBasketDal>();
 
+builder.Services.AddScoped<INotificationService, NotificaionManager>();
+builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
+
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
