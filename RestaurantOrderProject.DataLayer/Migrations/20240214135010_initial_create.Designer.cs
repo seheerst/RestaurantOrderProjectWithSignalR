@@ -12,8 +12,8 @@ using RestaurantOrderProject.DataAccessLayer.Concrete;
 namespace RestaurantOrderProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(RestaurantOrderContext))]
-    [Migration("20240131183800_add_title_to_contact")]
-    partial class add_title_to_contact
+    [Migration("20240214135010_initial_create")]
+    partial class initial_create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,38 @@ namespace RestaurantOrderProject.DataAccessLayer.Migrations
                     b.HasKey("AboutID");
 
                     b.ToTable("Abouts");
+                });
+
+            modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Basket", b =>
+                {
+                    b.Property<int>("BasketID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BasketID"), 1L, 1);
+
+                    b.Property<decimal>("Count")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TableID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("BasketID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("TableID");
+
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Booking", b =>
@@ -229,6 +261,40 @@ namespace RestaurantOrderProject.DataAccessLayer.Migrations
                     b.HasKey("MoneyCaseID");
 
                     b.ToTable("MoneyCases");
+                });
+
+            modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Notification", b =>
+                {
+                    b.Property<int>("NotificationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NotificationID"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MyProperty")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NotificationID");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Order", b =>
@@ -440,6 +506,25 @@ namespace RestaurantOrderProject.DataAccessLayer.Migrations
                     b.ToTable("Testimonials");
                 });
 
+            modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Basket", b =>
+                {
+                    b.HasOne("RestaurantOrderProject.EntityLayer.Entities.Product", "Product")
+                        .WithMany("Baskets")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RestaurantOrderProject.EntityLayer.Entities.Table", "Table")
+                        .WithMany("Baskets")
+                        .HasForeignKey("TableID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Table");
+                });
+
             modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.OrderDetail", b =>
                 {
                     b.HasOne("RestaurantOrderProject.EntityLayer.Entities.Order", "Order")
@@ -482,7 +567,14 @@ namespace RestaurantOrderProject.DataAccessLayer.Migrations
 
             modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Product", b =>
                 {
+                    b.Navigation("Baskets");
+
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("RestaurantOrderProject.EntityLayer.Entities.Table", b =>
+                {
+                    b.Navigation("Baskets");
                 });
 #pragma warning restore 612, 618
         }
