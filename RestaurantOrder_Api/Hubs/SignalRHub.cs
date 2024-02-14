@@ -12,19 +12,20 @@ namespace RestaurantOrder_Api.Hubs
 		private readonly IMoneyCaseService _moneyCaseService;
 		private readonly ITableService _tableService;
 		private readonly IBookingService _bookingService;
+		private readonly INotificationService _notificationService;
 
-        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, ITableService tableService, IBookingService bookingService)
-		{
-			_categoryService = categoryService;
-			_productService = productService;
-			_orderService = orderService;
-			_moneyCaseService = moneyCaseService;
-			_tableService = tableService;
-			_bookingService = bookingService;
-		
-		}
+        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, ITableService tableService, IBookingService bookingService, INotificationService notificationService)
+        {
+            _categoryService = categoryService;
+            _productService = productService;
+            _orderService = orderService;
+            _moneyCaseService = moneyCaseService;
+            _tableService = tableService;
+            _bookingService = bookingService;
+            _notificationService = notificationService;
+        }
 
-		public async Task SendStatistics()
+        public async Task SendStatistics()
         {
             var value1 = _categoryService.TGetCategoryCount();
             await Clients.All.SendAsync("ReceiveCategoryCount", value1);
@@ -90,6 +91,12 @@ namespace RestaurantOrder_Api.Hubs
             var values = _bookingService.TGetAllList();
             await Clients.All.SendAsync("ReceiveBookingList", values);
         }
+
+		public async Task SendNotification()
+		{
+			var value = _notificationService.TNotificationCountByStatusFalse();
+			await Clients.All.SendAsync("ReceiveNotificationCountByStatusFalse", value);
+		}
 
     }
 }
