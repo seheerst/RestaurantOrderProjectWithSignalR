@@ -15,11 +15,26 @@
 				setInterval(() => {
 					connection.invoke("SendNotification");
 
-				}, 1000);
+				}, 5000);
 			}).catch((err) => { console.log(err) });
 
 			connection.on("ReceiveNotificationCountByStatusFalse", (value) => {
 				$("#notificationcount").text(value);
+			});
+
+			connection.on("ReceiveNotificationListByFalse", (value) => {
+				console.log(value);
+				$("#notiList").empty();
+				for (var i = 0; i < value.length; i++) {
+					$("#notiList").append(`<a href="#" >
+					<div class="${value[i].type}" ><i class="${value[i].icon}"></i></div>
+					<div class="notif-content">
+					<span class="block"> ${value[i].description}</span>
+					<span class="time" > ${value[i].date}</span>
+					</div>
+					</a>
+					`)
+				}
 			});
 
 
@@ -67,38 +82,12 @@
 					</a>
 					<ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
 						<li>
-							<div class="dropdown-title">4 Yeni bildirim var</div>
+							<div class="dropdown-title"> Yeni bildirimler</div>
 						</li>
 						<li>
 							<div class="notif-center">
-								<a href="#">
-									<div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											New user registered
-										</span>
-										<span class="time">5 minutes ago</span>
-									</div>
-								</a>
-								<a href="#">
-									<div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											Rahmad commented on Admin
-										</span>
-										<span class="time">12 minutes ago</span>
-									</div>
-								</a>
+								<div id="notiList"></div>
 								
-								<a href="#">
-									<div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-									<div class="notif-content">
-										<span class="block">
-											Farrah liked Admin
-										</span>
-										<span class="time">17 minutes ago</span>
-									</div>
-								</a>
 							</div>
 						</li>
 						<li>

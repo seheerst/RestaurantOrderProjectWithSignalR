@@ -96,6 +96,9 @@ namespace RestaurantOrder_Api.Hubs
 		{
 			var value = _notificationService.TNotificationCountByStatusFalse();
 			await Clients.All.SendAsync("ReceiveNotificationCountByStatusFalse", value);
+
+			var notificationListByFalse = _notificationService.TGetAllNotificationByStatusFalse();
+			await Clients.All.SendAsync("ReceiveNotificationListByFalse", notificationListByFalse);
 		}
 
     }
