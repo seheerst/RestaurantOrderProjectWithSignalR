@@ -14,7 +14,6 @@ namespace RestaurantOrderProject.EntityLayer.Entities
         public string Icon { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
-        public int MyProperty { get; set; }
 
     }
 }
