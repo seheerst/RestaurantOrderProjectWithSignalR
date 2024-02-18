@@ -67,7 +67,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
             Category category = new Category()

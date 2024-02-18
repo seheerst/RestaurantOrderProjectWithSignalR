@@ -20,7 +20,7 @@ namespace RestaurantOrder_Api.Controllers
             _basketService = basketService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetBasketByTableId(int id)
         {
             var values = _basketService.TGetBasketByTableNumber(id);

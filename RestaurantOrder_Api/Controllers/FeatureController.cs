@@ -51,7 +51,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateFeature(UpdateFeatureDto updateFeatureDto)
         {
             Feature Feature = new Feature()

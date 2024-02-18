@@ -43,7 +43,7 @@ namespace RestaurantOrder_Api.Controllers
             _aboutService.TDelete(value);
             return Ok("Silindi");
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
             About about = new About()

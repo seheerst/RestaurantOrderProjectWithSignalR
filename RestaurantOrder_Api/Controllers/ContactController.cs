@@ -52,7 +52,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateContact(UpdateContactDto updateContactDto)
         {
             Contact Contact = new Contact()

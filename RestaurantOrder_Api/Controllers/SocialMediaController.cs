@@ -48,7 +48,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateSocialMedia(UpdateSocialMediaDto updateSocialMediaDto)
         {
             SocialMedia SocialMedia = new SocialMedia()

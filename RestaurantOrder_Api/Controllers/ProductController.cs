@@ -119,7 +119,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateProduct(UpdateProductDto updateProductDto)
         {
             Product Product = new Product()

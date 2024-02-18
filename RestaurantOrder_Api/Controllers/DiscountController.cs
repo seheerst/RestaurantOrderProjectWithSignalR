@@ -49,7 +49,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateDiscount(UpdateDiscountDto updateDiscountDto)
         {
             Discount Discount = new Discount()

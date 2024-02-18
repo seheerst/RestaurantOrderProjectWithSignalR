@@ -50,7 +50,7 @@ namespace RestaurantOrder_Api.Controllers
             return Ok("silindi");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateTestimonial(UpdateTestimonialDto updateTestimonialDto)
         {
             Testimonial Testimonial = new Testimonial()
