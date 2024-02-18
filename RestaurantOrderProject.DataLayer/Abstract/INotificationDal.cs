@@ -10,5 +10,6 @@ namespace RestaurantOrderProject.DataAccessLayer.Abstract
     public interface INotificationDal : IGenericDal<Notification>
     {
         int NotificationCountByStatusFalse();
+        List<Notification> GetAllNotificationByStatusFalse();
     }
 }

@@ -18,6 +18,11 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
             _context = context;
         }
 
+        public List<Notification> GetAllNotificationByStatusFalse()
+        {
+            return _context.Notifications.Where(x => x.Status == false).ToList();
+        }
+
         public int NotificationCountByStatusFalse()
         {
             var count = _context.Notifications.Where(x=> x.Status == false).Count();

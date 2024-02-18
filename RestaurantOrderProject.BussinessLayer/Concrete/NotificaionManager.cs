@@ -33,6 +33,11 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
             return _notificationDal.GetAllList();
         }
 
+        public List<Notification> TGetAllNotificationByStatusFalse()
+        {
+            return _notificationDal.GetAllNotificationByStatusFalse();
+        }
+
         public Notification TGetById(int id)
         {
             return _notificationDal.GetById(id);
