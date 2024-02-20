@@ -11,5 +11,8 @@ namespace RestaurantOrderProject.DataAccessLayer.Abstract
     {
         int NotificationCountByStatusFalse();
         List<Notification> GetAllNotificationByStatusFalse();
+
+        void ChangeNotificationStatusToTrue(int id);
+        void ChangeNotificationStatusToFalse(int id);
     }
 }

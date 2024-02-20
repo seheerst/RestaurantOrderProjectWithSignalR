@@ -18,6 +18,20 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
             _context = context;
         }
 
+        public void ChangeNotificationStatusToFalse(int id)
+        {
+            var value = _context.Notifications.Find(id);
+            value.Status = false;
+            _context.SaveChanges();
+        }
+
+        public void ChangeNotificationStatusToTrue(int id)
+        {
+            var value = _context.Notifications.Find(id);
+            value.Status = true;
+            _context.SaveChanges();
+        }
+
         public List<Notification> GetAllNotificationByStatusFalse()
         {
             return _context.Notifications.Where(x => x.Status == false).ToList();
@@ -25,7 +39,7 @@ namespace RestaurantOrderProject.DataAccessLayer.EntityFramework
 
         public int NotificationCountByStatusFalse()
         {
-            var count = _context.Notifications.Where(x=> x.Status == false).Count();
+            var count = _context.Notifications.Where(x => x.Status == false).Count();
             return count;
         }
     }

@@ -23,6 +23,16 @@ namespace RestaurantOrderProject.BussinessLayer.Concrete
             _notificationDal.Add(entity);
         }
 
+        public void TChangeNotificationStatusToFalse(int id)
+        {
+            _notificationDal.ChangeNotificationStatusToFalse(id);
+        }
+
+        public void TChangeNotificationStatusToTrue(int id)
+        {
+            _notificationDal.ChangeNotificationStatusToTrue(id);
+        }
+
         public void TDelete(Notification entity)
         {
             _notificationDal.Delete(entity);

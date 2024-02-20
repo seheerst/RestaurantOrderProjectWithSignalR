@@ -13,5 +13,8 @@ namespace RestaurantOrderProject.BussinessLayer.Abstract
     {
         int TNotificationCountByStatusFalse();
         List<Notification> TGetAllNotificationByStatusFalse();
+        void TChangeNotificationStatusToTrue(int id);
+        void TChangeNotificationStatusToFalse(int id);
+
     }
 }
