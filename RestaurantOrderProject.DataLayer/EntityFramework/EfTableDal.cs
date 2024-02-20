@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using RestaurantOrderProject.DataAccessLayer.Abstract;
+﻿using RestaurantOrderProject.DataAccessLayer.Abstract;
 using RestaurantOrderProject.DataAccessLayer.Concrete;
 using RestaurantOrderProject.DataAccessLayer.Repositories;
+using RestaurantOrderProject.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
