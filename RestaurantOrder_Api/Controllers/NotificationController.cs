@@ -79,5 +79,19 @@ namespace RestaurantOrder_Api.Controllers
             var value = _notificationService.TGetById(id);
             return Ok(value);
         }
+
+        [HttpGet("ChangeNotificationStatusToFalse/{id}")]
+        public IActionResult ChangeNotificationStatusToFalse(int id)
+        {
+            _notificationService.TChangeNotificationStatusToFalse(id);
+            return Ok("false olarak değiştirildi");
+        }
+
+        [HttpGet("ChangeNotificationStatusToTrue/{id}")]
+        public IActionResult ChangeNotificationStatusToTrue(int id)
+        {
+            _notificationService.TChangeNotificationStatusToTrue(id);
+            return Ok("true olarak değiştirildi");
+        }
     }
 }
