@@ -48,8 +48,8 @@ namespace SignalRWebUI.Controllers
             var responseMessage = await client.DeleteAsync($"https://localhost:7050/api/Notification/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
+        }
             return View();
         }
         [HttpGet]
@@ -71,12 +71,26 @@ namespace SignalRWebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateNotificationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7050/api/Notification/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7050/api/Notification", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public async Task<IActionResult> ChangeNotificationStatusToTrue(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            await client.GetAsync($"https://localhost:7050/api/Notification/ChangeNotificationStatusToTrue/{id}");
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> ChangeNotificationStatusToFalse(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            await client.GetAsync($"https://localhost:7050/api/Notification/ChangeNotificationStatusToFalse/{id}");
+            return RedirectToAction("Index");
         }
 
     }
