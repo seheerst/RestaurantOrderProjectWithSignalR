@@ -101,5 +101,18 @@ namespace RestaurantOrder_Api.Hubs
 			await Clients.All.SendAsync("ReceiveNotificationListByFalse", notificationListByFalse);
 		}
 
+        public async Task GetTableListByStatus()
+        {
+			var value = _tableService.TGetAllList();
+            await Clients.All.SendAsync("ReceiveTableListByStatus", value);
+
+           
+        }
+
+		public async Task SendMessage(string user, string message)
+		{
+			await Clients.All.SendAsync("ReceiveMessage", user, message);
+		}
+
     }
 }
