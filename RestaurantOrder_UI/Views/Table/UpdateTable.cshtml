@@ -1,0 +1,40 @@
+﻿@model UpdateTableDto
+@{
+    ViewData["Title"] = "UpdateTable";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Kategori İşlemleri</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" action="UpdateTable">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Kategoriyi Güncelle</div>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" asp-for="TableID" />
+
+                            <div class="form-group">
+                                <label>Masa Adı</label>
+                                <input class="form-control" asp-for="Name">
+                            </div>
+                            <div class=" form-group">
+                                <label>Masa Durumu</label>
+                                <input type="checkbox" asp-for="Status" class="form-check" />
+                            </div>
+                        </div>
+                        <div class="card-action">
+
+                            <button class="btn btn-success">Güncelle</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
