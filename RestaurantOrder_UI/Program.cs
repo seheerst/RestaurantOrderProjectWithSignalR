@@ -1,6 +1,11 @@
+using RestaurantOrderProject.DataAccessLayer.Concrete;
+using RestaurantOrderProject.EntityLayer.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<RestaurantOrderContext>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<RestaurantOrderContext>();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
@@ -18,7 +23,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
